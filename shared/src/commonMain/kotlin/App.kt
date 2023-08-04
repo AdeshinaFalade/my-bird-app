@@ -27,6 +27,7 @@ import dev.icerock.moko.mvvm.compose.viewModelFactory
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import model.BirdImage
+import remote.HttpRoutes
 
 @Composable
 fun BirdAppTheme(
@@ -98,7 +99,7 @@ fun BirdsPage(viewModel: BirdsViewModel){
 @Composable
 fun BirdImageCell(image: BirdImage) {
     KamelImage(
-        asyncPainterResource("https://sebastianaigner.github.io/demo-image-api/${image.path}"),
+        asyncPainterResource(HttpRoutes.BASE_URL + image.path),
         "${image.category} by ${image.author}",
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxWidth().aspectRatio(1.0f)
